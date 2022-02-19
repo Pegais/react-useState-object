@@ -7,27 +7,56 @@ export default function App() {
     email: '',
     address: '',
   });
-  let naming = 'snehal';
-  let mail = 'emsadasd.com';
-  let add = 'asdad';
-  function handle() {
-    setForm({
-      ...form,
-      name: naming,
-      email: mail,
-      address: add,
-    });
-  }
-  if(name=='name'){
 
+  // let arr=[1,2,3,4]
+  // let ob={
+  //   name:"",
+  //   email:''
+  // }
+  // console.log({...ob})
+
+
+  function handle(e) {
+    let{name}=e.target;
+
+    if(name=='name'){
+      setForm({
+        ...form,
+        name: e.target.value,
+      })
+   console.log(form)        
+
+    }else if(name=='email'){
+      setForm({
+        ...form,
+        email: e.target.value,
+      })
+
+    }else if(name=='address'){
+      setForm({
+        ...form,
+        address: e.target.value,
+      })
+    }
+    
+  }
+ 
+  function handleClick(){
+     data.name=form.name;
+     data.email=form.email;
+     data.address=form.address;
+     console.log(data)
+    //  dispatch(action_name(data))
+    }
+ 
   
-  }
-  console.log(form);
-
+  
   return (
     <div>
-      <h1 onClick={handle}>Hello StackBlitz!</h1>
-      <p>Start editing to see some magic happen :)</p>
+      <input type="text" placeholder="name" name='name' onChange={handle}/><br/>
+      <input type="text" placeholder="email" name='email' onChange={handle}/><br/>
+      <input type="text" placeholder="address" name='address' onChange={handle}/><br/>
+      <button onClick={handleClick}>Submit</button>
     </div>
   );
 }
